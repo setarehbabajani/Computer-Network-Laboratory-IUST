@@ -23,6 +23,7 @@ def firstNetwork():
     h3 = net.addHost( 'h3')
     h4 = net.addHost( 'h4')
     
+    
     info( '*** Adding switch\n' )
     s14 = net.addSwitch( 's14' )
     s24 = net.addSwitch( 's24' )
@@ -42,12 +43,18 @@ def firstNetwork():
     #This is used to run commands on the hosts
     info( '*** Starting terminals on hosts\n' )
     h1.cmd('xterm -xrm "XTerm.vt100.allowTitleOps: false" -T h1 &')
+    h2.cmd('xterm -xrm "XTerm.vt100.allowTitleOps: false" -T h2 &')
+    h3.cmd('xterm -xrm "XTerm.vt100.allowTitleOps: false" -T h3 &')
+    h4.cmd('xterm -xrm "XTerm.vt100.allowTitleOps: false" -T h4 &')
 
     info( '*** Running the command line interface\n' )
     CLI( net )
 	
     info( '*** Closing the terminals on the hosts\n' )
     h1.cmd("killall xterm")
+    h2.cmd("killall xterm")
+    h3.cmd("killall xterm")
+    h4.cmd("killall xterm")
     
     info( '*** Stopping network' )
     net.stop()
